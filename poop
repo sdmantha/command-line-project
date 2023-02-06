@@ -1,0 +1,33 @@
+from capitals import states
+import random
+
+def guess_capital (count = 0):
+    # your guess
+    user_guess= []
+    # random state
+    new_state = (random.choice(states))
+    # the capital, which is the right answer
+    correct_answer = (new_state["capital"])
+    # maybe this works to assign count here instead of in the while loop
+    # count = 0
+    
+    
+    while  user_guess != new_state:
+        user_guess = (input (f'Greetings! How well do you know the geography of the United States? Guess the capitals of each state and test your knowledge!\n Guess the capital of  {new_state["name"]}: '))
+
+        if user_guess == correct_answer:
+            count += 1
+
+            answer = input(f'Good job you got it right! Your points are {count}, Would you like to play again (y) or (n)')
+            # count += 1
+            if answer == "n":
+                 break
+            else:
+                guess_capital(count)
+                break
+        elif user_guess != correct_answer :
+            print(f'You got it wrong, and got no points! Try again \n Your score is {count}')
+        else:
+            print ('Invalid Answer')
+
+guess_capital(0)
